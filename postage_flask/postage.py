@@ -8,7 +8,7 @@ def index():
 
     return render_template('index.html')
 
-@Flask_App.route('/operation_result/'. methods=['POST'])
+@Flask_App.route('/operation_result/', methods=['POST'])
 def operation_result():
     """Route where we send calculator form input"""
     return (render_template, 'index.html')

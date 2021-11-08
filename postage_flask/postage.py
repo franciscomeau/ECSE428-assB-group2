@@ -11,7 +11,7 @@ def index():
 @Flask_App.route('/operation_result/', methods=['POST'])
 def operation_result():
     """Route where we send calculator form input"""
-    return (render_template, 'index.html')
+    return (render_template('index.html'))
 
 if __name__ == '__main__':
     Flask_App.debug = True

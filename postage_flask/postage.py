@@ -12,24 +12,39 @@ def index():
 def operation_result():
     """Route where we send calculator form input"""
     length = request.form['Length']
-    width = request.form['Width']
-    weigth = request.form['Weight']
     linearUnit = request.form['LinearUnit']
+    weight = request.form['Weight']
     weightUnit = request.form['WeightUnit']
+    width = request.form['Width']
+    widthUnit = request.form['WidthUnit']
+    isStandard = False
 
     #Convert values to floats
-
     calLength = float(length)
+    calWeight = float(weight)
     calWidth = float(width)
-    calWeight = float(weigth)
 
+    #Conversion of inches to mm if necessary
+    if linearUnit == "inches":
+        calLength = calLength * 25.4
+
+    if weightUnit == "ounces":
+        calWeight = calWeight * 28.35  
+
+    if widthUnit == "inches":
+        calWidth = calWidth * 25.4
+
+    if calLength >= 140 and  calLength <= 245 and calWidth >= 90 and calWidth <= 156 and calWeight >= 3 and calWeight <= 50:    
+        isStandard = True
 
     return (render_template('index.html', 
-    calLength = calLength, 
-    calWidth = calWidth, 
-    calWeight = calWeight, 
-    linearUnit = linearUnit, 
-    weightUnit = weightUnit))    
+    calLength = calLength,
+    linearUnit = linearUnit,
+    calWeight = calWeight,
+    weightUnit = weightUnit,
+    calWidth = calWidth,
+    isStandard = isStandard
+    ))    
 
 if __name__ == '__main__':
     Flask_App.debug = True

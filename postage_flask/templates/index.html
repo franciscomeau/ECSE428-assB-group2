@@ -22,19 +22,27 @@
     <label for="WeightUnit">Weight Unit:</label>
     <select id="WeightUnit" name="WeightUnit">
         <option value="grams">grams</option>
-        <option value="ouces">ounces</option>
+        <option value="ounces">ounces</option>
+    </select>
+
+    </br>
+
+    <label for="WidthUnit">Width Unit:</label>
+    <select id="WidthUnit" name="WidthUnit">
+        <option value="mm">mm</option>
+        <option value="inches">inches</option>
     </select>
 
     <br/>
     <input type="submit" value="Submit"/>
-    <input type="reset" value="Reset"/>
     
 </form>
-
 </br>
 
 <p>
-    Lenght is {{calLength}}, Width is {{calWidth}}, Weight is {{calWeight}}, the Linear Unit is {{linearUnit}}, the Weigth unit is {{weightUnit}}.
+    Lenght is {{calLength}}, Weight is {{calWeight}}, Width is {{calWidth}} (Final result units are in grams and mm). 
+</br>
+    Standard enveloppe?: {{isStandard}}
 </p>
 
 

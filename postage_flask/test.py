@@ -112,7 +112,14 @@ class FlaskTestCase(unittest.TestCase):
         response = tester.post('/operation_result/', data=dict(Length="379", Weight="501", LinearUnit="mm", 
         WeightUnit="grams", Width="269", WidthUnit="mm"),
         follow_redirects=True)
-        self.assertIn(b'Weight cannot be over 500g', response.data)                         
+        self.assertIn(b'Weight cannot be over 500g', response.data)        
+
+    def test_16(self):
+        tester = Flask_App.test_client(self)
+        response = tester.post('/operation_result/', data=dict(Length="379", Weight="2", LinearUnit="mm", 
+        WeightUnit="grams", Width="269", WidthUnit="mm"),
+        follow_redirects=True)
+        self.assertIn(b'Weight cannot be under 3g', response.data)                    
 
 
 if __name__ == '__main__':

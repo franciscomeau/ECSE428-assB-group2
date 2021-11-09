@@ -105,7 +105,22 @@ def operation_result():
             isStandard = isStandard,
             postalRate = postalRate,
             errorMessage = errorMessage
-        )) 
+        ))
+
+    # if weight under 3g then error message
+
+    if calWeight < 3:
+        errorMessage = "Error: Weight cannot be under 3g"
+        return (render_template('index.html', 
+            calLength = calLength,
+            linearUnit = linearUnit,
+            calWeight = calWeight,
+            weightUnit = weightUnit,
+            calWidth = calWidth,
+            isStandard = isStandard,
+            postalRate = postalRate,
+            errorMessage = errorMessage
+        ))  
 
     return (render_template('index.html', 
     calLength = calLength,

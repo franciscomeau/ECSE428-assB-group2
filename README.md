@@ -8,19 +8,19 @@
 
 • cd into repo/postage_flask
 
-• Create virtual environment with the following command:
+• Create virtual environment with the following command:__
   py -3 -m venv myvenv
   
-• Start the virtual envrionment with the following command:
+• Start the virtual envrionment with the following command:__
   myvenv\Scripts\activate
   
-• Install Flask inside the virtual envrionment with the following command:
+• Install Flask inside the virtual envrionment with the following command:__
    pip install Flask
   
-• Run the program run the following command:
+• Run the program run the following command:__
   python postage.py
   
-• The app can be accessed at:
+• The app can be accessed at:__
   http://localhost:5000/ and/or http://127.0.0.1:5000/
 
 
@@ -30,19 +30,19 @@
 
 • cd into repo/postage_flask
 
-• Create virtual environment with the following command:
+• Create virtual environment with the following command:__
   python3 -m venv myenv
   
-• Start the virtual envrionment with the following command:
+• Start the virtual envrionment with the following command:__
   . myenv/bin/activate
   
-• Install Flask inside the virtual envrionment with the following command:
+• Install Flask inside the virtual envrionment with the following command:__
     pip install Flask
   
-• Run the program run the following command:
+• Run the program run the following command:__
   python postage.py
   
-• The app can be accessed at:
+• The app can be accessed at:__
   http://localhost:5000/ and/or http://127.0.0.1:5000/
 
 # Description

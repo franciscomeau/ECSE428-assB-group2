@@ -64,8 +64,7 @@ def operation_result():
     
     calLength = float(length)
     calWeight = float(weight)
-    calWidth = float(width)
-
+    calWidth = float(width)  
     
 
     #Conversion of inches to mm if necessary
@@ -93,8 +92,20 @@ def operation_result():
     if not(isStandard) and calWeight > 100 and calWeight <= 500:
         postalRate = 2.40
 
+    # if weight over 500g then error message
 
-    
+    if calWeight > 500:
+        errorMessage = "Error: Weight cannot be over 500g"
+        return (render_template('index.html', 
+            calLength = calLength,
+            linearUnit = linearUnit,
+            calWeight = calWeight,
+            weightUnit = weightUnit,
+            calWidth = calWidth,
+            isStandard = isStandard,
+            postalRate = postalRate,
+            errorMessage = errorMessage
+        )) 
 
     return (render_template('index.html', 
     calLength = calLength,

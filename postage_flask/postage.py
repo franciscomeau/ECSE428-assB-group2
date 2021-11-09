@@ -8,6 +8,11 @@ def index():
 
     return render_template('index.html')
 
+def errorPage():
+    """ Displays the index page accessible at '/' """
+
+    return render_template('errorPage.html')
+
 @Flask_App.route('/operation_result/', methods=['POST'])
 def operation_result():
     """Route where we send calculator form input"""
@@ -34,14 +39,7 @@ def operation_result():
             weight[0] == '-'
         ):
             errorMessage = "Error: Negative inputs are not allowed"
-            return (render_template('index.html', 
-                calLength = length,
-                linearUnit = linearUnit,
-                calWeight = weight,
-                weightUnit = weightUnit,
-                calWidth = width,
-                isStandard = isStandard,
-                postalRate = postalRate,
+            return (render_template('errorPage.html', 
                 errorMessage = errorMessage
             ))
 
@@ -49,14 +47,7 @@ def operation_result():
 
     if not(length.isnumeric()) or not(width.isnumeric()) or not(weight.isnumeric()):
         errorMessage = "Error: Non-numeric characters are not allowed for Length, Width, or Weight"
-        return (render_template('index.html', 
-            calLength = length,
-            linearUnit = linearUnit,
-            calWeight = weight,
-            weightUnit = weightUnit,
-            calWidth = width,
-            isStandard = isStandard,
-            postalRate = postalRate,
+        return (render_template('errorPage.html', 
             errorMessage = errorMessage
         ))   
    
@@ -96,14 +87,7 @@ def operation_result():
 
     if calWeight > 500:
         errorMessage = "Error: Weight cannot be over 500g"
-        return (render_template('index.html', 
-            calLength = calLength,
-            linearUnit = linearUnit,
-            calWeight = calWeight,
-            weightUnit = weightUnit,
-            calWidth = calWidth,
-            isStandard = isStandard,
-            postalRate = postalRate,
+        return (render_template('errorPage.html', 
             errorMessage = errorMessage
         ))
 
@@ -111,18 +95,11 @@ def operation_result():
 
     if calWeight < 3:
         errorMessage = "Error: Weight cannot be under 3g"
-        return (render_template('index.html', 
-            calLength = calLength,
-            linearUnit = linearUnit,
-            calWeight = calWeight,
-            weightUnit = weightUnit,
-            calWidth = calWidth,
-            isStandard = isStandard,
-            postalRate = postalRate,
+        return (render_template('errorPage.html', 
             errorMessage = errorMessage
         ))  
 
-    return (render_template('index.html', 
+    return (render_template('resultPage.html', 
     calLength = calLength,
     linearUnit = linearUnit,
     calWeight = calWeight,

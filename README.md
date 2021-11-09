@@ -20,6 +20,24 @@
 • The app can be accessed at:
   http://localhost:5000/
 
+(On Mac)
+
+• Clone repo
+
+• cd into repo/postage_flask
+
+• Create virtual environment with the following command:
+  python3 -m venv myenv
+  
+• Start the virtual envrionment with the following command:
+  . myenv/bin/activate
+  
+• Run the program run the following command:
+  python postage.py
+  
+• The app can be accessed at:
+  http://localhost:5000/ and/or http://127.0.0.1:5000/
+
 # Description
 
 Implementation of **ramp**, a rest API postal rate calculator application with TDD implemented as a local host application.

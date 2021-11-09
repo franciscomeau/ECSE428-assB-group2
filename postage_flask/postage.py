@@ -2,6 +2,13 @@ from flask import Flask, render_template, request
 
 Flask_App = Flask(__name__) # Creating our Flask Instance
 
+def is_numeric(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
 @Flask_App.route('/', methods=['GET'])
 def index():
     """ Displays the index page accessible at '/' """
@@ -26,36 +33,37 @@ def operation_result():
     postalRate = -1.0
     errorMessage = ""
 
-    # if negative inputs then error message
-
-    if (
-        length[1:].isnumeric() and
-        width[1:].isnumeric() and
-        weight[1:].isnumeric()
-    ):
-        if (
-            length[0] == '-' or
-            width[0] == '-' or
-            weight[0] == '-'
-        ):
-            errorMessage = "Error: Negative inputs are not allowed"
-            return (render_template('errorPage.html', 
-                errorMessage = errorMessage
-            ))
-
     # if non-Numeric then error message
 
-    if not(length.isnumeric()) or not(width.isnumeric()) or not(weight.isnumeric()):
+    if ( 
+    not(is_numeric(length)) or
+    not(is_numeric(width)) or
+    not(is_numeric(weight))
+    ):
         errorMessage = "Error: Non-numeric characters are not allowed for Length, Width, or Weight"
         return (render_template('errorPage.html', 
             errorMessage = errorMessage
-        ))   
+        ))
+
+    
    
    # Convert values to floats
     
     calLength = float(length)
     calWeight = float(weight)
-    calWidth = float(width)  
+    calWidth = float(width) 
+
+    # if negative inputs then error message
+
+    if (
+        calLength < 0 or
+        calWidth < 0 or
+        calWeight < 0
+    ):
+        errorMessage = "Error: Negative inputs are not allowed"
+        return (render_template('errorPage.html', 
+            errorMessage = errorMessage
+        )) 
     
 
     #Conversion of inches to mm if necessary

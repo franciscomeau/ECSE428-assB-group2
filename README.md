@@ -14,11 +14,14 @@
 • Start the virtual envrionment with the following command:
   myvenv\Scripts\activate
   
+• Install Flask inside the virtual envrionment with the following command:
+  pip install Flask
+  
 • Run the program run the following command:
   python postage.py
   
 • The app can be accessed at:
-  http://localhost:5000/
+  http://localhost:5000/ and/or http://127.0.0.1:5000/
 
 (On Mac)
 
@@ -31,6 +34,9 @@
   
 • Start the virtual envrionment with the following command:
   . myenv/bin/activate
+  
+• Install Flask inside the virtual envrionment with the following command:
+  pip install Flask
   
 • Run the program run the following command:
   python postage.py

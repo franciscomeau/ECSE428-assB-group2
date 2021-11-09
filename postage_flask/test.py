@@ -91,7 +91,21 @@ class FlaskTestCase(unittest.TestCase):
         response = tester.post('/operation_result/', data=dict(Length="379", Weight="350", LinearUnit="mm", 
         WeightUnit="grams", Width="269", WidthUnit="mm"),
         follow_redirects=True)
-        self.assertIn(b'Postal rate: $2.4', response.data)                                              
+        self.assertIn(b'Postal rate: $2.4', response.data) 
+
+    def test_13(self):
+        tester = Flask_App.test_client(self)
+        response = tester.post('/operation_result/', data=dict(Length="37a9", Weight="35c0", LinearUnit="mm", 
+        WeightUnit="grams", Width="2b69", WidthUnit="mm"),
+        follow_redirects=True)
+        self.assertIn(b'Non-numeric characters are not allowed for Length, Width, or Weight', response.data) 
+
+    def test_14(self):
+        tester = Flask_App.test_client(self)
+        response = tester.post('/operation_result/', data=dict(Length="-379", Weight="-350", LinearUnit="mm", 
+        WeightUnit="grams", Width="-269", WidthUnit="mm"),
+        follow_redirects=True)
+        self.assertIn(b'Negative inputs are not allowed', response.data)                                              
 
 
 if __name__ == '__main__':

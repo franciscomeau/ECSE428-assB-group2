@@ -18,12 +18,55 @@ def operation_result():
     width = request.form['Width']
     widthUnit = request.form['WidthUnit']
     isStandard = False
-    postalRate = 0.0
+    postalRate = -1.0
+    errorMessage = ""
 
-    #Convert values to floats
+    # if negative inputs then error message
+
+    if (
+        length[1:].isnumeric() and
+        width[1:].isnumeric() and
+        weight[1:].isnumeric()
+    ):
+        if (
+            length[0] == '-' or
+            width[0] == '-' or
+            weight[0] == '-'
+        ):
+            errorMessage = "Error: Negative inputs are not allowed"
+            return (render_template('index.html', 
+                calLength = length,
+                linearUnit = linearUnit,
+                calWeight = weight,
+                weightUnit = weightUnit,
+                calWidth = width,
+                isStandard = isStandard,
+                postalRate = postalRate,
+                errorMessage = errorMessage
+            ))
+
+    # if non-Numeric then error message
+
+    if not(length.isnumeric()) or not(width.isnumeric()) or not(weight.isnumeric()):
+        errorMessage = "Error: Non-numeric characters are not allowed for Length, Width, or Weight"
+        return (render_template('index.html', 
+            calLength = length,
+            linearUnit = linearUnit,
+            calWeight = weight,
+            weightUnit = weightUnit,
+            calWidth = width,
+            isStandard = isStandard,
+            postalRate = postalRate,
+            errorMessage = errorMessage
+        ))   
+   
+   # Convert values to floats
+    
     calLength = float(length)
     calWeight = float(weight)
     calWidth = float(width)
+
+    
 
     #Conversion of inches to mm if necessary
     if linearUnit == "inches":
@@ -50,6 +93,9 @@ def operation_result():
     if not(isStandard) and calWeight > 100 and calWeight <= 500:
         postalRate = 2.40
 
+
+    
+
     return (render_template('index.html', 
     calLength = calLength,
     linearUnit = linearUnit,
@@ -57,7 +103,8 @@ def operation_result():
     weightUnit = weightUnit,
     calWidth = calWidth,
     isStandard = isStandard,
-    postalRate = postalRate
+    postalRate = postalRate,
+    errorMessage = errorMessage
     ))    
 
 if __name__ == '__main__':

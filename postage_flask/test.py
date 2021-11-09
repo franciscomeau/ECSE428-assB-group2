@@ -63,7 +63,14 @@ class FlaskTestCase(unittest.TestCase):
         response = tester.post('/operation_result/', data=dict(Length="379", Weight="499", LinearUnit="mm", 
         WeightUnit="grams", Width="269", WidthUnit="mm"),
         follow_redirects=True)
-        self.assertIn(b'False', response.data)                                
+        self.assertIn(b'False', response.data)
+
+    def test_9(self):
+        tester = Flask_App.test_client(self)
+        response = tester.post('/operation_result/', data=dict(Length="160", Weight="20", LinearUnit="mm", 
+        WeightUnit="grams", Width="120", WidthUnit="mm"),
+        follow_redirects=True)
+        self.assertIn(b'Postal rate: $0.49', response.data)                                     
 
 
 if __name__ == '__main__':

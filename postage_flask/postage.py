@@ -18,6 +18,7 @@ def operation_result():
     width = request.form['Width']
     widthUnit = request.form['WidthUnit']
     isStandard = False
+    postalRate = 0.0
 
     #Convert values to floats
     calLength = float(length)
@@ -37,13 +38,17 @@ def operation_result():
     if calLength >= 140 and  calLength <= 245 and calWidth >= 90 and calWidth <= 156 and calWeight >= 3 and calWeight <= 50:    
         isStandard = True
 
+    if isStandard and calWeight <= 30:
+        postalRate = 0.49
+
     return (render_template('index.html', 
     calLength = calLength,
     linearUnit = linearUnit,
     calWeight = calWeight,
     weightUnit = weightUnit,
     calWidth = calWidth,
-    isStandard = isStandard
+    isStandard = isStandard,
+    postalRate = postalRate
     ))    
 
 if __name__ == '__main__':

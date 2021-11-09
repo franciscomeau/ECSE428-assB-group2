@@ -41,6 +41,12 @@ def operation_result():
     if isStandard and calWeight <= 30:
         postalRate = 0.49
 
+    if isStandard and calWeight > 30 and calWeight <= 50:
+        postalRate = 0.80
+
+    if not(isStandard) and calWeight <= 100:
+        postalRate = 0.98
+
     return (render_template('index.html', 
     calLength = calLength,
     linearUnit = linearUnit,

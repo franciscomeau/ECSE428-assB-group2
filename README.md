@@ -1,5 +1,27 @@
 # ECSE428-assB-group2
 
+# How to install/Run
+
+(On Windows)
+
+• Clone repo
+
+• cd into repo/postage_flask
+
+• Create virtual environment with the following command:
+  py -3 -m venv myvenv
+  
+• Start the virtual envrionment with the following command:
+  myvenv\Scripts\activate
+  
+• Run the program run the following command:
+  python postage.py
+  
+• The app can be accessed at:
+  http://localhost:5000/
+
+# Description
+
 Implementation of **ramp**, a rest API postal rate calculator application with TDD implemented as a local host application.
 
 ramp is implemented as a rest api service on a local host environment, using flask.

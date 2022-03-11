@@ -1,4 +1,4 @@
-# ECSE428-assB-group2
+# ECSE428-AssignmentB-group02
 
 # How to install/Run
 
